@@ -43,6 +43,8 @@ gem "bootsnap", require: false
 
 gem "devise"
 
+gem 'pg'
+
 gem 'sidekiq'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'

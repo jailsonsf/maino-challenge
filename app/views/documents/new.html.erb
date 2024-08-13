@@ -1,0 +1,10 @@
+<%= form_with model: @document, local: true do |form| %>
+  <div class="field">
+    <%= form.label :xml_file %>
+    <%= form.file_field :xml_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Upload Document" %>
+  </div>
+<% end %>
