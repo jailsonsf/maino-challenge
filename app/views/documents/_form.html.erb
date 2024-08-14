@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center mt-4">
+  <div class="col-md-6">
+    <%= form_with(model: @document, local: true, html: { class: "form-group" }) do |form| %>
+      <div class="mb-3 text-center">
+        <%= form.label(:xml_file, class: "form-label") %>
+        <%= form.file_field(:xml_file, accept: 'text/xml', class: "form-control") %>
+      </div>
+      <div class="actions text-center">
+        <%= form.submit("Enviar arquivo", class: "btn btn-primary") %>
+      </div>
+    <% end %>
+  </div>
+</div>

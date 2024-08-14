@@ -1,17 +1,1 @@
-<div class="row mt-4 d-flex justify-content-between">
-  <div class="col-md-6">
-    <h1 class="text-start">Mainô</h1>
-  </div>
-  <div class="col-md-6 d-flex justify-content-end">
-    <h2 class="me-3"><%= current_user.email %></h2>
-  </div>
-</div>
-
-<div class="row d-flex justify-content-between">
-  <div class="col-md-6 d-flex justify-content-start">
-    <%= button_to("Adicionar arquivos", new_document_path, data: { turbo: "false" }, class: "btn btn-outline-primary", method: :get) %>
-  </div>
-  <div class="col-md-6 d-flex justify-content-end">
-    <%= button_to("Sair", destroy_user_session_path, data: { turbo: "false" }, class: "btn btn-outline-danger", method: :delete) %>
-  </div>
-</div>
+<h1>Home Page</h1>

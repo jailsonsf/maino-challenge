@@ -8,3 +8,11 @@ pt-BR:
               blank: "E-mail não pode ficar em branco"
             password:
               blank: "Senha não pode ficar em branco"
+        document:
+          attributes:
+            xml_file:
+              wrong_type: "Arquivo deve ser XML"
+      messages:
+        not_saved:
+          one: "Não foi possível salvar este(a) %{resource}:"
+          other: "Não foi possível salvar este(a) %{resource}:"
