@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-  def home
-    if !current_user
-      redirect_to(new_user_session_path)
-    end
-  end
+  include ApplicationHelper
+
+  before_action :require_login
 end
