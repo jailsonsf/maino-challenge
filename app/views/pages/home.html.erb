@@ -1,1 +1,9 @@
-<h1>Home Page</h1>
+<div class="text-center mt-4">
+  <% if @documents.blank? %>
+    <h1>Sem relatórios no momento</h1>
+  <% else %>
+    <% @documents.each do |document| %>
+      <h2><%= document.xml_file.filename %></h2>
+    <% end %>
+  <% end %>
+</div>

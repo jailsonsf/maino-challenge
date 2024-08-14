@@ -2,6 +2,6 @@ class ProcessXmlFileJob < ApplicationJob
   queue_as :default
 
   def perform(document)
-    puts document.xml_file.download
+    ProcessXmlFileService.new(document).call
   end
 end
