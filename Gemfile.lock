@@ -322,6 +322,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  nokogiri
   pg
   pry-byebug
   pry-rails

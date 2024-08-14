@@ -45,6 +45,8 @@ gem "devise"
 
 gem 'pg'
 
+gem 'nokogiri'
+
 gem 'sidekiq'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'
