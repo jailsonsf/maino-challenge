@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_13_204415) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_15_125007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,66 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_204415) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "destinatarios", force: :cascade do |t|
+    t.string "cnpj"
+    t.string "name"
+    t.string "address"
+    t.bigint "report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_destinatarios_on_report_id"
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string "xml_file"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "emitentes", force: :cascade do |t|
+    t.string "cnpj"
+    t.string "name"
+    t.string "name_fant"
+    t.string "address"
+    t.string "fone"
+    t.bigint "report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_emitentes_on_report_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name_prod"
+    t.string "ncm"
+    t.string "cfop"
+    t.string "u_com"
+    t.decimal "q_com"
+    t.decimal "value_un_com"
+    t.decimal "value_icms"
+    t.decimal "value_ipi"
+    t.decimal "value_pis"
+    t.decimal "value_cofins"
+    t.bigint "report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_products_on_report_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "serie"
+    t.string "n_nf"
+    t.datetime "dh_emi"
+    t.decimal "products_total_value"
+    t.decimal "icms_total"
+    t.decimal "ipi_total"
+    t.decimal "pis_total"
+    t.decimal "cofins_total"
+    t.bigint "document_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_reports_on_document_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,5 +118,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_204415) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "destinatarios", "reports"
   add_foreign_key "documents", "users"
+  add_foreign_key "emitentes", "reports"
+  add_foreign_key "products", "reports"
+  add_foreign_key "reports", "documents"
 end

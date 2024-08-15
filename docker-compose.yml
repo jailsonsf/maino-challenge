@@ -5,6 +5,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mainochallenge
+    ports:
+      - "54320:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
 

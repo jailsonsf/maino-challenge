@@ -13,7 +13,7 @@ class DocumentsController < ApplicationController
 
     if @document.save
       ProcessXmlFileJob.perform_later(@document)
-      redirect_to(@document, notice: "Arquivo adicionado. Resultado será exibido em breve.")
+      redirect_to(@document, notice: "Arquivo adicionado. Resultado será exibido em breve na página inicial.")
     else
       error_message = @document.errors[:xml_file].join(', ')
       redirect_to(new_document_path, alert: error_message)

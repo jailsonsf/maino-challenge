@@ -1,9 +1,10 @@
 class Document < ApplicationRecord
-  has_one_attached :xml_file
-  belongs_to :user
+  has_one_attached(:xml_file)
+  has_one(:report)
+  belongs_to(:user)
 
-  validates :xml_file, presence: true
-  validate :correct_xml_file_type
+  validates(:xml_file, presence: true)
+  validate(:correct_xml_file_type)
 
   private
 

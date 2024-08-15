@@ -12,5 +12,3 @@ pt-BR:
           attributes:
             xml_file:
               wrong_type: "Arquivo deve ser XML"
-      messages:
-        login_required: "Você deve estar logado para acessar esta página."
