@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   private
 
   def set_documents
-    @documents = Document.where(user_id: current_user.id)
+    @documents = Document.where(user_id: current_user.id).order('created_at DESC')
   end
 end

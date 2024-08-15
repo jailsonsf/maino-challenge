@@ -2,6 +2,7 @@
   <% if @documents.blank? %>
     <h1>Sem relatórios no momento</h1>
   <% else %>
+    <h1>Relatórios</h1>
     <% @documents.each do |document| %>
       <div class="container">
         <div class="row justify-content-md-center">
@@ -12,7 +13,10 @@
               </div>
               <div class="card-body">
                 Nota Fiscal: <%= document.report[:n_nf] %>
-                Serie: <%= document.report[:serie] %>
+
+                <div class="text-center mt-4">
+                  <%= link_to("Ver relatório", report_path(document.report), class: "btn btn-outline-primary", method: :get) %>
+                </div>
               </div>
               <div class="card-footer text-muted">
                 <small>

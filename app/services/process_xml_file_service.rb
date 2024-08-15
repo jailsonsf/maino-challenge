@@ -26,46 +26,12 @@ class ProcessXmlFileService
       report.document_id = @document.id
       report.save
 
-      infNFe.css('emit').each do |emit|
-        emit_info = {
-          report_id: report.id,
-          cnpj: emit.css('CNPJ').text,
-          name: emit.css('xName').text,
-          name_fant: emit.css('xFant').text,
-          address: mount_emit_address(emit),
-          fone: emit.css('fone').text
-        }
-
-        report.emitente = Emitente.create(emit_info)
-      end
-
-      infNFe.css('dest').each do |dest|
-        dest_info = {
-          report_id: report.id,
-          cnpj: dest.css('CNPJ').text,
-          name: dest.css('xName').text,
-          address: mount_dest_address(dest),
-        }
-
-        report.destinatario = Destinatario.create(dest_info)
-      end
+      report.emitente = Emitente.create(emit_params(infNFe.css('emit')))
+      report.destinatario = Destinatario.create(dest_params(infNFe.css('dest')))
 
       infNFe.css('det').each do |det|
-        product_info = {
-          report_id: report.id,
-          name_prod: det.css('xProd').text,
-          ncm: det.css('NCM').text,
-          cfop: det.css('CFOP').text,
-          u_com: det.css('uCom').text,
-          q_com: det.css('qCom').text.to_f,
-          value_un_com: det.css('vUnCom').text.to_f,
-          value_icms: det.css('vICMS').text.to_f,
-          value_ipi: det.css('vIPI').text.to_f,
-          value_pis: det.css('vPIS').text.to_f,
-          value_cofins: det.css('vCOFINS').text.to_f
-        }
-
-        report.products << Product.create(product_info)
+        product = product_params(det)
+        report.products << Product.create(product)
       end
 
       unless report.save
@@ -75,6 +41,42 @@ class ProcessXmlFileService
   end
 
   private
+
+  def emit_params(emit)
+    {
+      report_id: report.id,
+      cnpj: emit.css('CNPJ').text,
+      name: emit.css('xName').text,
+      name_fant: emit.css('xFant').text,
+      address: mount_emit_address(emit),
+      fone: emit.css('fone').text
+    }
+  end
+
+  def dest_params(dest)
+    {
+      report_id: report.id,
+      cnpj: dest.css('CNPJ').text,
+      name: dest.css('xName').text,
+      address: mount_dest_address(dest),
+    }
+  end
+
+  def product_params(det)
+    {
+      report_id: report.id,
+      name_prod: det.css('xProd').text,
+      ncm: det.css('NCM').text,
+      cfop: det.css('CFOP').text,
+      u_com: det.css('uCom').text,
+      q_com: det.css('qCom').text.to_f,
+      value_un_com: det.css('vUnCom').text.to_f,
+      value_icms: det.css('vICMS').text.to_f,
+      value_ipi: det.css('vIPI').text.to_f,
+      value_pis: det.css('vPIS').text.to_f,
+      value_cofins: det.css('vCOFINS').text.to_f
+    }
+  end
 
   def mount_emit_address(emit)
     ender_emit = emit.css('enderEmit')
