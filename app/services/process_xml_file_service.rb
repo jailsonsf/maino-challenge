@@ -26,16 +26,12 @@ class ProcessXmlFileService
       report.document_id = @document.id
       report.save
 
-      report.emitente = Emitente.create(emit_params(infNFe.css('emit')))
-      report.destinatario = Destinatario.create(dest_params(infNFe.css('dest')))
+      report.create_emitente(emit_params(infNFe.css('emit')))
+      report.create_destinatario(dest_params(infNFe.css('dest')))
 
       infNFe.css('det').each do |det|
         product = product_params(det)
-        report.products << Product.create(product)
-      end
-
-      unless report.save
-        puts report.errors.full_messages
+        report.products.create(product)
       end
     end
   end
@@ -44,9 +40,8 @@ class ProcessXmlFileService
 
   def emit_params(emit)
     {
-      report_id: report.id,
       cnpj: emit.css('CNPJ').text,
-      name: emit.css('xName').text,
+      name: emit.css('xNome').text,
       name_fant: emit.css('xFant').text,
       address: mount_emit_address(emit),
       fone: emit.css('fone').text
@@ -55,16 +50,14 @@ class ProcessXmlFileService
 
   def dest_params(dest)
     {
-      report_id: report.id,
       cnpj: dest.css('CNPJ').text,
-      name: dest.css('xName').text,
+      name: dest.css('xNome').text,
       address: mount_dest_address(dest),
     }
   end
 
   def product_params(det)
     {
-      report_id: report.id,
       name_prod: det.css('xProd').text,
       ncm: det.css('NCM').text,
       cfop: det.css('CFOP').text,
