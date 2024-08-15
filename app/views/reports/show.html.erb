@@ -19,42 +19,42 @@
                   <b>Data e Hora de Emissão:</b> <%= @report[:dh_emi] %>
                 </p>
               </div>
+              <hr class="hr" />
+              <section>
+                <h4>Dados do Emitente:</h4>
+                <%= render(partial: 'emitente', locals: { emitente: @report.emitente }) %>
+              </section>
+              <hr class="hr" />
+              <section>
+                <h4>Dados do Destinatário:</h4>
+                <%= render(partial: 'destinatario', locals: { destinatario: @report.destinatario }) %>
+              </section>
             </section>
             <hr class="hr" />
             <section>
-              <h4>Dados do Emitente:</h4>
-              <div class="container">
-                <p>
-                  <b>CNPJ:</b> <%= @report.emitente[:cnpj] %>
-                </p>
-                <p>
-                  <b>Nome:</b> <%= @report.emitente[:name] %>
-                </p>
-                <p>
-                  <b>Nome Fantasia:</b> <%= @report.emitente[:name_fant] %>
-                </p>
-                <p>
-                  <b>Endereço:</b> <%= @report.emitente[:address] %>
-                </p>
-                <p>
-                  <b>Telefone:</b> <%= @report.emitente[:fone] %>
-                </p>
-              </div>
+              <h2>Produtos:</h2>
+              <% @report.products.each do |product| %>
+                <%= render(partial: 'product', locals: { product: product }) %>
+                <hr class="hr" />
+              <% end %>
             </section>
-            <hr class="hr" />
             <section>
-              <h4>Dados do Destinatário:</h4>
-              <div class="container">
-                <p>
-                  <b>CNPJ:</b> <%= @report.destinatario[:cnpj] %>
-                </p>
-                <p>
-                  <b>Nome:</b> <%= @report.destinatario[:name] %>
-                </p>
-                <p>
-                  <b>Endereço:</b> <%= @report.destinatario[:address] %>
-                </p>
-              </div>
+              <h2>Totais:</h2>
+              <p>
+                <b>Valor Total dos Produtos:</b> <%= @report[:products_total_value] %>
+              </p>
+              <p>
+                <b>ICMS Total:</b> <%= @report[:icms_total] %>
+              </p>
+              <p>
+                <b>IPI Total:</b> <%= @report[:ipi_total] %>
+              </p>
+              <p>
+                <b>PIS Total:</b> <%= @report[:pis_total] %>
+              </p>
+              <p>
+                <b>COFINS Total:</b> <%= @report[:cofins_total] %>
+              </p>
             </section>
           </div>
         </div>

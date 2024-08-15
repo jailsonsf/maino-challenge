@@ -8,6 +8,7 @@ pt-BR:
               blank: "E-mail não pode ficar em branco"
             password:
               blank: "Senha não pode ficar em branco"
+              too_short: "Senha muito curta, use uma senha mais forte."
         document:
           attributes:
             xml_file:
