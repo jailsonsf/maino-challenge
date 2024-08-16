@@ -5,11 +5,14 @@ pt-BR:
         user:
           attributes:
             email:
-              blank: "E-mail não pode ficar em branco"
+              blank: "E-mail não pode ficar em branco."
+              invalid: "E-mail inválido."
             password:
-              blank: "Senha não pode ficar em branco"
+              blank: "Senha não pode ficar em branco."
               too_short: "Senha muito curta, use uma senha mais forte."
+            password_confirmation:
+              confirmation: "Confirmação diferente da senha fornecida."
         document:
           attributes:
             xml_file:
-              wrong_type: "Arquivo deve ser XML"
+              wrong_type: "Arquivo deve ser XML."

@@ -49,6 +49,8 @@ gem 'nokogiri'
 
 gem 'ransack'
 
+gem 'active_storage_validations'
+
 gem 'sidekiq'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'

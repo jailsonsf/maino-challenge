@@ -8,6 +8,6 @@ FactoryBot.define do
     ipi_total { "9.99" }
     pis_total { "9.99" }
     cofins_total { "9.99" }
-    Document { nil }
+    document { nil }
   end
 end
