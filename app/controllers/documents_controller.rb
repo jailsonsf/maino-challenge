@@ -8,11 +8,13 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_params)
+    @document = Document.new
     @document.user = current_user
+    @document.filename = document_params[:xml_file].original_filename
 
     if @document.save
-      ProcessXmlFileJob.perform_later(@document)
+      xml_data = document_params[:xml_file].tempfile.read
+      ProcessXmlFileJob.perform_later(xml_data, @document.id)
       redirect_to(new_document_path, notice: "Arquivo adicionado. Resultado será exibido em breve na página inicial.")
     else
       error_message = @document.errors[:xml_file].join(', ')

@@ -1,38 +1,36 @@
 class ProcessXmlFileService
-  def initialize(document)
-    @document = document
+  def initialize(xml_data, document_id)
+    @xml_data = xml_data
+    @document_id = document_id
   end
 
   def call
-    if @document.xml_file.attached?
-      xml_data = @document.xml_file.download
-      parsed_xml = Nokogiri::XML(xml_data)
-      report = Report.new
+    parsed_xml = Nokogiri::XML(@xml_data)
+    report = Report.new
 
-      infNFe = parsed_xml.css('infNFe')
+    infNFe = parsed_xml.css('infNFe')
 
-      infNFe.css('ide').each do |ide|
-        total = infNFe.css('total')
-        report.serie = ide.css('serie').text
-        report.n_nf = ide.css('nNF').text
-        report.dh_emi = DateTime.parse(ide.css('dhEmi').text)
-        report.products_total_value = total.css('vProd').text.to_f
-        report.icms_total = total.css('vICMS').text.to_f
-        report.ipi_total = total.css('vIPI').text.to_f
-        report.pis_total = total.css('vPIS').text.to_f
-        report.cofins_total = total.css('vCOFINS').text.to_f
-      end
+    infNFe.css('ide').each do |ide|
+      total = infNFe.css('total')
+      report.serie = ide.css('serie').text
+      report.n_nf = ide.css('nNF').text
+      report.dh_emi = DateTime.parse(ide.css('dhEmi').text)
+      report.products_total_value = total.css('vProd').text.to_f
+      report.icms_total = total.css('vICMS').text.to_f
+      report.ipi_total = total.css('vIPI').text.to_f
+      report.pis_total = total.css('vPIS').text.to_f
+      report.cofins_total = total.css('vCOFINS').text.to_f
+    end
 
-      report.document_id = @document.id
-      report.save
+    report.document_id = @document_id
+    report.save
 
-      report.create_emitente(emit_params(infNFe.css('emit')))
-      report.create_destinatario(dest_params(infNFe.css('dest')))
+    report.create_emitente(emit_params(infNFe.css('emit')))
+    report.create_destinatario(dest_params(infNFe.css('dest')))
 
-      infNFe.css('det').each do |det|
-        product = product_params(det)
-        report.products.create(product)
-      end
+    infNFe.css('det').each do |det|
+      product = product_params(det)
+      report.products.create(product)
     end
   end
 

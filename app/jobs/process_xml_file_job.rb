@@ -1,7 +1,7 @@
 class ProcessXmlFileJob < ApplicationJob
   queue_as :default
 
-  def perform(document)
-    ProcessXmlFileService.new(document).call
+  def perform(xml_data, document_id)
+    ProcessXmlFileService.new(xml_data, document_id).call
   end
 end
