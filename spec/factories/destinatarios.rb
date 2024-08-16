@@ -3,6 +3,6 @@ FactoryBot.define do
     cnpj { "MyString" }
     name { "MyString" }
     address { "MyString" }
-    Report { nil }
+    report { nil }
   end
 end

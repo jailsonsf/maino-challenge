@@ -5,6 +5,6 @@ FactoryBot.define do
     name_fant { "MyString" }
     address { "MyString" }
     fone { "MyString" }
-    Report { nil }
+    report { nil }
   end
 end

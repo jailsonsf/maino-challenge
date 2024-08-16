@@ -6,6 +6,6 @@ FactoryBot.define do
     u_com { "MyString" }
     q_com { "9.99" }
     value_un_com { "9.99" }
-    Report { nil }
+    report { nil }
   end
 end

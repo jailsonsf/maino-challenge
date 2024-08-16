@@ -16,4 +16,11 @@ RSpec.describe User, type: :model do
       expect(user.errors.added?(:password_confirmation, I18n.t('activerecord.errors.models.user.attributes.password_confirmation.confirmation')))
     end
   end
+
+  context 'when user is valid' do
+    it 'when email, password and password_confirmation are valid' do
+      user = create(:user)
+      expect(user).to be_valid
+    end
+  end
 end
