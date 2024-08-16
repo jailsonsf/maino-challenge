@@ -16,7 +16,6 @@ services:
   - type: worker
     name: sidekiq-worker
     env: ruby
-    plan: free # Ensure the worker uses the free plan
     buildCommand: bundle install
     startCommand: bundle exec sidekiq -C config/sidekiq.yml
     envVars:
