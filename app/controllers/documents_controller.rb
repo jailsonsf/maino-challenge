@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
       ProcessXmlFileJob.perform_later(xml_data, @document.id)
       redirect_to(new_document_path, notice: "Arquivo adicionado. Resultado será exibido em breve na página inicial.")
     else
-      error_message = @document.errors[:xml_file].join(', ')
+      error_message = 'Falha ao criar documento.'
       redirect_to(new_document_path, alert: error_message)
     end
   end
