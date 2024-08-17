@@ -1,24 +1,33 @@
-# README
+# Mainô Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Desafio Mainô - Aplicação web Ruby on Rails, com autenticação de usuário para upload de documentos e processamento em background.
 
-Things you may want to cover:
+**Principais tecnologias usadas**:
+* Ruby 3.3.4 e Ruby on Rails 7.1.3
+* PostgreSQL
+* Redis
+* Sidekiq
+* RSpec
 
-* Ruby version
+## Instalação
 
-* System dependencies
+### Clone o repositório
+```shell
+git clone git@github.com:jailsonsf/maino-challenge.git
+cd maino-challenge
+```
 
-* Configuration
+Como nesse projeto o ambiente de desenvolvimento foi feito usando docker, podemos iniciar a aplicação com o docker compose:
+```shell
+docker compose up --build
+```
 
-* Database creation
+Em outro terminal, vamos executar as migrações:
+```shell
+docker compose run web rails db:migrate
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ao terminar de executar a aplicação podemos terminar a execução dos containers
+```shell
+docker compose down
+```
