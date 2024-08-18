@@ -1,0 +1,34 @@
+pt-BR:
+  reports:
+    export_excel:
+      nf:
+        serie: "Número de Série"
+        n_nf: "Número da Nota Fiscal"
+        dh_emi: "Data de Emissão"
+      emitente:
+        cnpj: "CNPJ"
+        name: "Nome"
+        name_fant: "Nome Fantasia"
+        address: "Endereço"
+        fone: "Telefone"
+      destinatario:
+        cnpj: "CNPJ"
+        name: "Nome"
+        address: "Endereço"
+      products:
+        name_prod: "Nome do Produto"
+        ncm: "NCM"
+        cfop: "CFOP"
+        u_com: "Unidade Comercializada"
+        q_com: "Quantidade Comercializada"
+        value_un_com: "Valor Unitário"
+        value_icms: "Valor ICMS"
+        value_ipi: "Valor IPI"
+        value_pis: "Valor PIS"
+        value_cofins: "Valor COFINS"
+      totals:
+        products_total_value: "Valor Total dos Produtos"
+        icms_total: "Total ICMS"
+        ipi_total: "Total IPI"
+        pis_total: "Total PIS"
+        cofins_total: "Total COFINS"

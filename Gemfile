@@ -51,6 +51,8 @@ gem 'ransack'
 
 gem 'active_storage_validations'
 
+gem 'fast_excel'
+
 gem 'sidekiq'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'

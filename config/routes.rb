@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
     resources :documents
-    resources :reports
+    resources :reports do
+      member do
+        get :export_excel
+      end
+    end
   end
 end

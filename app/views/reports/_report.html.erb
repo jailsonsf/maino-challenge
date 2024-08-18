@@ -10,6 +10,7 @@
 
           <div class="text-center mt-4">
             <%= link_to("Ver relatório", report_path(report), class: "btn btn-outline-primary", method: :get) %>
+            <%= link_to("Exportar Excel", export_excel_report_path(report), target: "_blank", class: "btn btn-outline-secondary", method: :get) %>
           </div>
         </div>
         <div class="card-footer text-muted">
