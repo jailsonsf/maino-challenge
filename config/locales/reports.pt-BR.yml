@@ -1,6 +1,12 @@
 pt-BR:
   reports:
     export_excel:
+      sections:
+        nf: "Dados da Nota Fiscal:"
+        emitente: "Dados do Emitente:"
+        destinatario: "Dados do Destinatário:"
+        products: "Dados dos Produtos:"
+        totals: "Totais:"
       nf:
         serie: "Número de Série"
         n_nf: "Número da Nota Fiscal"

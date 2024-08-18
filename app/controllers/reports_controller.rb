@@ -30,25 +30,25 @@ class ReportsController < ApplicationController
     worksheet.auto_width = true
     bold = xlsx.bold_format
 
-    worksheet.append_row(['Dados da Nota Fiscal:'], bold)
+    worksheet.append_row([I18n.t("reports.export_excel.sections.nf")], bold)
     worksheet.append_row(headers[:nf_headers], bold)
     worksheet.append_row(data[:nf].values)
 
-    worksheet.append_row(['Dados do Emitente:'], bold)
+    worksheet.append_row([I18n.t("reports.export_excel.sections.emitente")], bold)
     worksheet.append_row(headers[:emitente_headers], bold)
     worksheet.append_row(data[:emitente].values)
 
-    worksheet.append_row(['Dados do Destinatário:'], bold)
+    worksheet.append_row([I18n.t("reports.export_excel.sections.destinatario")], bold)
     worksheet.append_row(headers[:destinatario_headers], bold)
     worksheet.append_row(data[:destinatario].values)
 
-    worksheet.append_row(['Dados dos Produtos:'], bold)
+    worksheet.append_row([I18n.t("reports.export_excel.sections.products")], bold)
     worksheet.append_row(headers[:products_headers], bold)
     data[:products].each do |product|
       worksheet.append_row(product.values)
     end
 
-    worksheet.append_row(['Totais:'], bold)
+    worksheet.append_row([I18n.t("reports.export_excel.sections.totals")], bold)
     worksheet.append_row(headers[:totals_headers], bold)
     worksheet.append_row(data[:totals].values)
 

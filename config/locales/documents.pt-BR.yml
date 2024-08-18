@@ -1,0 +1,5 @@
+pt-BR:
+  documents:
+    messages:
+      document_created: "Arquivo adicionado. Resultado será exibido em breve na página inicial."
+      create_fail: "Falha ao criar documento."

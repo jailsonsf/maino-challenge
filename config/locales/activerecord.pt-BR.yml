@@ -14,5 +14,5 @@ pt-BR:
               confirmation: "Confirmação diferente da senha fornecida."
         document:
           attributes:
-            xml_file:
+            file:
               wrong_type: "Arquivo deve ser XML."

@@ -15,9 +15,13 @@ class DocumentsController < ApplicationController
     if @document.save
       xml_data = document_params[:xml_file].tempfile.read
       ProcessXmlFileJob.perform_later(xml_data, @document.id)
-      redirect_to(new_document_path, notice: "Arquivo adicionado. Resultado será exibido em breve na página inicial.")
+      redirect_to(new_document_path, notice: I18n.t('documents.messages.document_created'))
     else
-      error_message = 'Falha ao criar documento.'
+      error_message = I18n.t('documents.messages.create_fail')
+      if @document.errors.messages[:filename].present?
+        error_message = @document.errors.messages[:filename].join
+      end
+
       redirect_to(new_document_path, alert: error_message)
     end
   end
