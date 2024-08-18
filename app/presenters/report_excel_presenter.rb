@@ -8,7 +8,7 @@ class ReportExcelPresenter
       nf: {
         serie: @report[:serie],
         n_nf: @report[:n_nf],
-        dh_emi: @report[:dh_emi]
+        dh_emi: @report[:dh_emi].to_s
       },
       emitente: {
         cnpj: @report.emitente[:cnpj],
