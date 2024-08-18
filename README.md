@@ -31,3 +31,8 @@ Ao terminar de executar a aplicação podemos terminar a execução dos containe
 ```shell
 docker compose down
 ```
+
+Executar os testes
+```shell
+docker compose run web rspec
+```
